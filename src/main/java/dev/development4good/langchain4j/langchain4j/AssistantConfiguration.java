@@ -1,5 +1,6 @@
 package dev.development4good.langchain4j.langchain4j;
 
+import dev.langchain4j.memory.chat.ChatMemoryProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,7 +13,7 @@ public class AssistantConfiguration {
      * This chat memory will be used by an {@link Assistant}
      */
     @Bean
-    ChatMemory chatMemory() {
-        return MessageWindowChatMemory.withMaxMessages(10);
+    ChatMemoryProvider chatMemoryProvider() {
+        return memoryId -> MessageWindowChatMemory.withMaxMessages(10);
     }
 }
